@@ -30,6 +30,10 @@ pidof stress
 kill 2118 2117
 
 lsblk
+sudo mkfs.ext4 /dev/sdb
+sudo mkdir /mnt/newdisk
+sudo mount /dev/sdb /mnt/newdisk
+df -h
 
 sudo systemctl start firewalld
 sudo systemctl status firewalld
