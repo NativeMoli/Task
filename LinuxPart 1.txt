@@ -1,0 +1,53 @@
+cd
+mdkir my_vagrant_centos
+
+vagrant init geerlingguy/centos7
+vagrant up
+vagrant ssh 
+
+ll -la
+
+sudo sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*.repo
+sudo sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*.repo
+
+sudo yum clean all
+sudo yum makecache
+
+sudo yum install -y mc git htop nano curl wget ansible ncdu httpd
+
+ps
+ps aux
+
+sudo systemctl status httpd
+sudo systemctl start httpd
+sudo systemctl enable httpd
+
+sudo yum install epel-release
+sudo yum install stress
+stress --cpu 1
+stress --vm 1 --vm-bytes 128M
+pidof stress
+kill 2118 2117
+
+lsblk
+sudo mkfs.ext4 /dev/sdb
+sudo mkdir /mnt/newdisk
+sudo mount /dev/sdb /mnt/newdisk
+df -h
+
+sudo systemctl start firewalld
+sudo systemctl status firewalld
+sudo systemctl enable firewalld
+sudo firewall-cmd --permanent --zone=public --add-service=http
+sudo firewall-cmd --reload
+sudo firewall-cmd --list-all
+
+ip a
+
+sudo tail -n 50 /var/log/httpd/access_log
+sudo tail -n 50 /var/log/httpd/error_log
+sudo tail -f /var/log/httpd/access_log
+
+vagrant halt
+vagrant destroy --force
+
