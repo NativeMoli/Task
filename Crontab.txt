@@ -1,0 +1,1 @@
+*/5 * * * * ~/linux_p2/script.sh >> ~/linux_p2/log/backup.log 2>> ~/linux_p2/log/err_backup.log
