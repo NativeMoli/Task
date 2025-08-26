@@ -1,0 +1,45 @@
+docker pull postgres:13
+
+docker run --name pg13-container -e POSTGRES_PASSWORD=your_password -p 5432:5432 -d postgres:13
+
+docker compose up -d
+
+
+docker exec -it pg13-container psql -U postgres
+CREATE DATABASE itca;
+\q
+\l
+
+CREATE USER student WITH PASSWORD 'Your_Password' SUPERUSER;
+
+\du
+\c itca
+CREATE SCHEMA devops4;
+
+-- Таблиця користувачів
+CREATE TABLE devops4.users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Таблиця проектів
+CREATE TABLE devops4.projects (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  owner_id INT REFERENCES devops4.users(id),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO devops4.users (username, email) VALUES
+  ('alice', 'alice@example.com'),
+  ('bob', 'bob@example.com');
+
+INSERT INTO devops4.projects (name, description, owner_id) VALUES
+  ('Project A', 'Description for project A', 1),
+  ('Project B', 'Description for project B', 2);
+
+\dt devops4.*
+SELECT * FROM devops4.users;
