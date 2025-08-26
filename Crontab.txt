@@ -1,0 +1,2 @@
+*/5 * * * * /bin/bash /home/kali/Task/script.sh >> /home/kali/linux_p2/log/backup.log 2>> /home/kali/linux_p2/log/err_backup.log
+
