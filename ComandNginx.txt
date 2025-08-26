@@ -1,0 +1,32 @@
+sudo apt update
+sudo apt install nginx -y
+sudo systemctl status nginx
+nginx -version               nginx version: nginx/1.24.0 (Ubuntu    
+
+sudo apt install apache2-utils 
+sudo htpasswd -cb /etc/nginx/.htpasswd oleh 12345aA!     
+sudo nano /etc/nginx/sites-available/default
+sudo nginx -t
+sudo systemctl reload nginx
+echo "<h1>Welcome to Nginx</h1>" | sudo tee /var/www/html/index.html
+sudo nginx -t
+sudo systemctl reload nginx
+vagrant ssh
+
+sudo apt update
+sudo apt install -y build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev git wget
+
+mkdir ~/nginx_build && cd ~/nginx_build
+
+wget http://nginx.org/download/nginx-1.24.0.tar.gz
+tar zxvf nginx-1.24.0.tar.gz
+
+git clone https://github.com/yaoweibin/nginx_upstream_check_module.git
+
+cd nginx-1.24.0
+
+./configure --add-module=../nginx_upstream_check_module
+make
+sudo make install
+
+/usr/local/nginx/sbin/nginx -V
