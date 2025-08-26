@@ -1,0 +1,15 @@
+make[1]: Leaving directory '/home/vagrant/nginx_build/nginx-1.24.0'
+vagrant@vagrant:~/nginx_build/nginx-1.24.0$ /usr/local/nginx/sbin/nginx -V
+nginx version: nginx/1.24.0
+built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04)
+configure arguments: --add-module=../nginx_upstream_check_module
+
+
+vagrant@vagrant:~/nginx_build/nginx-1.24.0$ uname -a
+Linux vagrant 6.8.0-64-generic #67-Ubuntu SMP PREEMPT_DYNAMIC Sun Jun 15 20:23:31 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+
+vagrant@vagrant:~/nginx_build/nginx-1.24.0$ /usr/local/nginx/sbin/nginx -V
+nginx version: nginx/1.24.0
+built by gcc 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04)
+configure arguments: --add-module=../nginx_upstream_check_module
